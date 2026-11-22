@@ -2,11 +2,12 @@ package io.hammerhall.streamforge.task.code.level01.easy.part01.ore.mov;
 
 import io.hammerhall.streamforge.domain.movie.Movie;
 import io.hammerhall.streamforge.task.Base;
-import java.util.Collection;
-import java.util.List;
 import lombok.NonNull;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.util.Collection;
+import java.util.List;
 
 @DisplayName("Программка для зрителей")
 public class MovCode0001 extends Base {
@@ -22,7 +23,9 @@ public class MovCode0001 extends Base {
      * @return список названий всех фильмов
      */
     public List<String> task(@NonNull Collection<Movie> movies) {
-        throw new UnsupportedOperationException("Реализуйте метод");
+        return movies.stream()
+                .map(Movie::getTitle)
+                .toList();
     }
 
     @Test

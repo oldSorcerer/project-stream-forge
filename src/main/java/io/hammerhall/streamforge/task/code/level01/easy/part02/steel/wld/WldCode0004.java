@@ -21,7 +21,9 @@ public class WldCode0004 extends Base {
      * @return список стран без городов
      */
     public List<Country> task(@NonNull Collection<Country> countries) {
-        throw new UnsupportedOperationException("Реализуйте метод");
+        return countries.stream()
+                .filter(country -> country.getCities().isEmpty())
+                .toList();
     }
 
     @Test

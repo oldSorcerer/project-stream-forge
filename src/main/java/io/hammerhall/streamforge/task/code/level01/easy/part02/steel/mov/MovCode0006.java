@@ -2,8 +2,11 @@ package io.hammerhall.streamforge.task.code.level01.easy.part02.steel.mov;
 
 import io.hammerhall.streamforge.domain.movie.Movie;
 import io.hammerhall.streamforge.task.Base;
+
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
+
 import lombok.NonNull;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -25,7 +28,10 @@ public class MovCode0006 extends Base {
      * @return список фильмов с отсутствующим или некорректным рейтингом
      */
     public List<Movie> task(@NonNull Collection<Movie> movies) {
-        throw new UnsupportedOperationException("Реализуйте метод");
+        return movies.stream()
+                .filter(movie -> Objects.isNull(movie.getRank())
+                        || movie.getRank() < 1 || movie.getRank() > 10)
+                .toList();
     }
 
     @Test
